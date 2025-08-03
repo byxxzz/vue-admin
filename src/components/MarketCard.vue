@@ -62,7 +62,6 @@ export default {
   padding: 16px;
   margin-bottom: 16px;
   transition: all 0.2s ease;
-  cursor: pointer;
 }
 
 .market-card:hover {
@@ -72,20 +71,22 @@ export default {
 
 .market-header {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f3f4f6;
 }
 
 .market-info {
   display: flex;
+  align-items: center;
   gap: 12px;
   flex: 1;
 }
 
 .market-avatar {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: #f3f4f6;
   display: flex;
@@ -95,155 +96,122 @@ export default {
 }
 
 .avatar-emoji {
-  font-size: 20px;
-}
-
-.market-details {
-  flex: 1;
-  min-width: 0;
+  font-size: 16px;
 }
 
 .market-title {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   color: #1f2937;
-  margin: 0 0 4px 0;
+  margin: 0;
   line-height: 1.4;
 }
 
-.market-meta {
+.candidates-section {
+  margin-bottom: 16px;
+}
+
+.candidate-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 12px;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f9fafb;
 }
 
-.market-author {
-  color: #6b7280;
+.candidate-row:last-child {
+  border-bottom: none;
 }
 
-.market-percentage {
-  font-weight: 600;
+.candidate-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.candidate-name {
+  font-size: 14px;
   color: #1f2937;
-}
-
-.market-change {
-  font-size: 11px;
-  padding: 2px 6px;
-  border-radius: 4px;
   font-weight: 500;
 }
 
-.market-change.positive {
+.candidate-percentage {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-left: auto;
+  margin-right: 16px;
+}
+
+.candidate-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.trade-btn {
+  padding: 4px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 32px;
+}
+
+.yes-btn {
   background: #dcfce7;
   color: #16a34a;
 }
 
-.market-change.negative {
+.yes-btn:hover {
+  background: #bbf7d0;
+}
+
+.no-btn {
   background: #fee2e2;
   color: #dc2626;
 }
 
-.market-actions {
+.no-btn:hover {
+  background: #fecaca;
+}
+
+.market-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.volume-info {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.volume-text {
+  font-weight: 500;
+}
+
+.action-icons {
   display: flex;
   gap: 8px;
 }
 
-.bookmark-btn, .share-btn {
+.icon-btn {
   background: none;
   border: none;
   cursor: pointer;
   padding: 4px;
   border-radius: 4px;
   transition: background-color 0.2s;
+  font-size: 14px;
+  color: #6b7280;
 }
 
-.bookmark-btn:hover, .share-btn:hover {
+.icon-btn:hover {
   background: #f3f4f6;
-}
-
-.market-stats {
-  margin-bottom: 12px;
-}
-
-.volume-info {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-}
-
-.volume-label {
-  color: #6b7280;
-}
-
-.volume-value {
-  font-weight: 500;
-  color: #1f2937;
-}
-
-.trading-section {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-
-.trade-btn {
-  flex: 1;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-
-.buy-yes {
-  background: #dcfce7;
-  color: #16a34a;
-}
-
-.buy-yes:hover:not(.disabled) {
-  background: #bbf7d0;
-}
-
-.buy-no {
-  background: #fee2e2;
-  color: #dc2626;
-}
-
-.buy-no:hover:not(.disabled) {
-  background: #fecaca;
-}
-
-.trade-btn.disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.btn-label {
-  font-size: 11px;
-}
-
-.btn-price {
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.additional-info {
-  text-align: center;
-  margin-top: 8px;
-}
-
-.info-text {
-  font-size: 11px;
-  color: #6b7280;
-  background: #f9fafb;
-  padding: 4px 8px;
-  border-radius: 4px;
 }
 </style>
