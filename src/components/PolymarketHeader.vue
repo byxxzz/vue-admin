@@ -25,20 +25,7 @@
         </div>
       </div>
 
-      <!-- Navigation Menu -->
-      <nav class="nav-section">
-        <a href="#" class="nav-link">🔥 Trending</a>
-        <a href="#" class="nav-link">New</a>
-        <a href="#" class="nav-link">Politics</a>
-        <a href="#" class="nav-link">Middle East</a>
-        <a href="#" class="nav-link">Sports</a>
-        <a href="#" class="nav-link">Crypto</a>
-        <a href="#" class="nav-link">Tech</a>
-        <a href="#" class="nav-link">Culture</a>
-        <a href="#" class="nav-link">World</a>
-        <a href="#" class="nav-link">Economy</a>
-        <a href="#" class="nav-link more-menu">More ▼</a>
-      </nav>
+
 
       <!-- User Actions -->
       <div class="user-section">
