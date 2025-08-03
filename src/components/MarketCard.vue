@@ -74,22 +74,29 @@ export default {
 
 .market-header {
   display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #f3f4f6;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .market-info {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   flex: 1;
 }
 
+.profile-image {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
 .market-avatar {
-  width: 32px;
-  height: 32px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: #f3f4f6;
   display: flex;
@@ -99,85 +106,78 @@ export default {
 }
 
 .avatar-emoji {
-  font-size: 16px;
+  font-size: 20px;
+}
+
+.market-details {
+  flex: 1;
+  min-width: 0;
 }
 
 .market-title {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   color: #1f2937;
   margin: 0;
   line-height: 1.4;
 }
 
-.candidates-section {
+.market-chance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.percentage {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1;
+}
+
+.chance-label {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+
+.trading-section {
+  display: flex;
+  gap: 12px;
   margin-bottom: 16px;
 }
 
-.candidate-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid #f9fafb;
-}
-
-.candidate-row:last-child {
-  border-bottom: none;
-}
-
-.candidate-info {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex: 1;
-}
-
-.candidate-name {
-  font-size: 14px;
-  color: #1f2937;
-  font-weight: 500;
-}
-
-.candidate-percentage {
-  font-size: 14px;
-  font-weight: 600;
-  color: #1f2937;
-  margin-left: auto;
-  margin-right: 16px;
-}
-
-.candidate-actions {
-  display: flex;
-  gap: 8px;
-}
-
 .trade-btn {
-  padding: 4px 12px;
+  flex: 1;
+  padding: 12px 16px;
   border: none;
-  border-radius: 4px;
-  font-size: 12px;
+  border-radius: 8px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
-  min-width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
 }
 
-.yes-btn {
+.buy-yes {
   background: #dcfce7;
   color: #16a34a;
 }
 
-.yes-btn:hover {
+.buy-yes:hover {
   background: #bbf7d0;
 }
 
-.no-btn {
+.buy-no {
   background: #fee2e2;
   color: #dc2626;
 }
 
-.no-btn:hover {
+.buy-no:hover {
   background: #fecaca;
 }
 
@@ -185,8 +185,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 12px;
-  border-top: 1px solid #f3f4f6;
 }
 
 .volume-info {
@@ -207,14 +205,15 @@ export default {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px;
+  padding: 6px;
   border-radius: 4px;
   transition: background-color 0.2s;
-  font-size: 14px;
-  color: #6b7280;
+  font-size: 16px;
+  color: #9ca3af;
 }
 
 .icon-btn:hover {
   background: #f3f4f6;
+  color: #6b7280;
 }
 </style>
