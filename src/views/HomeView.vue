@@ -28,6 +28,7 @@ export default {
       markets: [
         {
           id: 1,
+          type: 'binary',
           profileImage: 'https://cdn.builder.io/api/v1/image/assets%2F86f447350d864cafabc33551b38f85a3%2F851e58e80402472481621e7fdaaf1397?format=webp&width=800',
           person: 'Ghislaine Maxwell',
           title: 'Will Ghislaine Maxwell testify before Congress...',
@@ -36,80 +37,63 @@ export default {
         },
         {
           id: 2,
-          avatar: '🗳️',
+          type: 'multi',
+          avatar: '🏛️',
           title: 'Presidential Election Winner 2028',
-          percentage: 28,
-          volume: '$5m Vol.'
+          volume: '$5m Vol.',
+          candidates: [
+            { id: 1, name: 'JD Vance', percentage: 28 },
+            { id: 2, name: 'Gavin Newsom', percentage: 14 },
+            { id: 3, name: 'Alexandria Ocasio-Cortez', percentage: 8 }
+          ]
         },
         {
           id: 3,
+          type: 'multi',
           avatar: '⚖️',
           title: 'Fed decision in September?',
-          percentage: 64,
-          volume: '$148k Vol.'
+          volume: '$148k Vol.',
+          candidates: [
+            { id: 1, name: 'Rate Cut 0.25%', percentage: 45 },
+            { id: 2, name: 'Rate Cut 0.5%', percentage: 32 },
+            { id: 3, name: 'No Change', percentage: 23 }
+          ]
         },
         {
           id: 4,
+          type: 'multi',
           avatar: '🗽',
           title: 'New York City Mayoral Election',
-          percentage: 82,
-          volume: '$41m Vol.'
+          volume: '$41m Vol.',
+          candidates: [
+            { id: 1, name: 'Eric Adams', percentage: 62 },
+            { id: 2, name: 'Curtis Sliwa', percentage: 28 },
+            { id: 3, name: 'Maya Wiley', percentage: 10 }
+          ]
         },
         {
           id: 5,
+          type: 'multi',
           avatar: '🏆',
           title: 'World Series Champion 2025',
-          percentage: 28,
-          volume: '$2.3m Vol.'
+          volume: '$2.3m Vol.',
+          candidates: [
+            { id: 1, name: 'Los Angeles Dodgers', percentage: 28 },
+            { id: 2, name: 'New York Yankees', percentage: 24 },
+            { id: 3, name: 'Atlanta Braves', percentage: 18 }
+          ]
         },
         {
           id: 6,
+          type: 'multi',
           avatar: '₿',
-          title: 'Bitcoin above $100k by end of 2024?',
-          percentage: 42,
-          volume: '$1.8m Vol.'
-        },
-        {
-          id: 7,
-          avatar: '🏛️',
-          title: 'Supreme Court Justice retirement in 2024?',
-          percentage: 35,
-          volume: '$890k Vol.'
-        },
-        {
-          id: 8,
-          avatar: '🇮🇱',
-          title: 'Israel x Hamas ceasefire by August 15?',
-          percentage: 6,
-          volume: '$4m Vol.'
-        },
-        {
-          id: 9,
-          avatar: '🔥',
-          title: 'Will Trump pardon Jonathan Pollard by Jan?',
-          percentage: 22,
-          volume: '$3m Vol.'
-        },
-        {
-          id: 10,
-          avatar: '💊',
-          title: 'GLP-1 released by major pharma in 2024?',
-          percentage: 78,
-          volume: '$974k Vol.'
-        },
-        {
-          id: 11,
-          avatar: '🏛️',
-          title: 'Will Polymarket US go live in 2025?',
-          percentage: 65,
-          volume: '$413k Vol.'
-        },
-        {
-          id: 12,
-          avatar: '📈',
-          title: 'US congress stock trading ban in 2025?',
-          percentage: 8,
-          volume: '$24k Vol.'
+          title: 'Bitcoin Price End of 2024',
+          volume: '$1.8m Vol.',
+          candidates: [
+            { id: 1, name: 'Above $100k', percentage: 42 },
+            { id: 2, name: '$75k - $100k', percentage: 38 },
+            { id: 3, name: 'Below $75k', percentage: 20 }
+          ]
         }
       ]
     }
