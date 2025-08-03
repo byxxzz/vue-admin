@@ -30,8 +30,8 @@
       <!-- User Actions -->
       <div class="user-section">
         <button class="help-btn">❓ How it works</button>
-        <button class="login-btn">Log in</button>
-        <button class="signup-btn">Sign Up</button>
+        <button class="login-btn" @click="showAuthModal">Log in</button>
+        <button class="signup-btn" @click="showAuthModal">Sign Up</button>
         <button class="menu-btn">☰</button>
       </div>
     </div>
@@ -52,6 +52,9 @@
         <button class="nav-arrow">→</button>
       </div>
     </div>
+
+    <!-- Auth Modal -->
+    <AuthModal :isVisible="isAuthModalVisible" @close="hideAuthModal" />
   </header>
 </template>
 
