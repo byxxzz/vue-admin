@@ -267,3 +267,34 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.polymarket-home {
+  min-height: 100vh;
+  background: #f9fafb;
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.markets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 16px;
+  }
+
+  .markets-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+</style>
