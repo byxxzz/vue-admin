@@ -19,8 +19,7 @@
           </div>
         </div>
         <div class="market-chance">
-          <span class="percentage">{{ market.percentage }}%</span>
-          <span class="chance-label">chance</span>
+          <CircularProgress :percentage="market.percentage" />
         </div>
       </div>
 
@@ -92,8 +91,13 @@
 </template>
 
 <script>
+import CircularProgress from './CircularProgress.vue'
+
 export default {
   name: 'MarketCard',
+  components: {
+    CircularProgress
+  },
   props: {
     market: {
       type: Object,
