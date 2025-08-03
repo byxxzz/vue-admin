@@ -28,69 +28,88 @@ export default {
       markets: [
         {
           id: 1,
-          avatar: '🏛️',
-          title: 'Presidential Election Winner 2028',
-          volume: '$5m Vol.',
-          candidates: [
-            { id: 1, name: 'JD Vance', percentage: 28 },
-            { id: 2, name: 'Gavin Newsom', percentage: 14 },
-            { id: 3, name: 'Alexandria Ocasio-Cortez', percentage: 8 }
-          ]
+          profileImage: 'https://cdn.builder.io/api/v1/image/assets%2F86f447350d864cafabc33551b38f85a3%2F851e58e80402472481621e7fdaaf1397?format=webp&width=800',
+          person: 'Ghislaine Maxwell',
+          title: 'Will Ghislaine Maxwell testify before Congress...',
+          percentage: 17,
+          volume: '$168k Vol.'
         },
         {
           id: 2,
-          avatar: '⚖️',
-          title: 'Fed decision in September?',
-          volume: '$148k Vol.',
-          candidates: [
-            { id: 1, name: 'Rate Cut 0.25%', percentage: 45 },
-            { id: 2, name: 'Rate Cut 0.5%', percentage: 32 },
-            { id: 3, name: 'No Change', percentage: 23 }
-          ]
+          avatar: '🗳️',
+          title: 'Presidential Election Winner 2028',
+          percentage: 28,
+          volume: '$5m Vol.'
         },
         {
           id: 3,
-          avatar: '🗽',
-          title: 'New York City Mayoral Election',
-          volume: '$41m Vol.',
-          candidates: [
-            { id: 1, name: 'Eric Adams', percentage: 62 },
-            { id: 2, name: 'Curtis Sliwa', percentage: 28 },
-            { id: 3, name: 'Maya Wiley', percentage: 10 }
-          ]
+          avatar: '⚖️',
+          title: 'Fed decision in September?',
+          percentage: 64,
+          volume: '$148k Vol.'
         },
         {
           id: 4,
-          avatar: '🏆',
-          title: 'World Series Champion 2025',
-          volume: '$2.3m Vol.',
-          candidates: [
-            { id: 1, name: 'Los Angeles Dodgers', percentage: 28 },
-            { id: 2, name: 'New York Yankees', percentage: 24 },
-            { id: 3, name: 'Atlanta Braves', percentage: 18 }
-          ]
+          avatar: '🗽',
+          title: 'New York City Mayoral Election',
+          percentage: 82,
+          volume: '$41m Vol.'
         },
         {
           id: 5,
-          avatar: '₿',
-          title: 'Bitcoin Price End of 2024',
-          volume: '$1.8m Vol.',
-          candidates: [
-            { id: 1, name: 'Above $100k', percentage: 42 },
-            { id: 2, name: '$75k - $100k', percentage: 38 },
-            { id: 3, name: 'Below $75k', percentage: 20 }
-          ]
+          avatar: '🏆',
+          title: 'World Series Champion 2025',
+          percentage: 28,
+          volume: '$2.3m Vol.'
         },
         {
           id: 6,
+          avatar: '₿',
+          title: 'Bitcoin above $100k by end of 2024?',
+          percentage: 42,
+          volume: '$1.8m Vol.'
+        },
+        {
+          id: 7,
           avatar: '🏛️',
-          title: 'Supreme Court Justice Retirement 2024',
-          volume: '$890k Vol.',
-          candidates: [
-            { id: 1, name: 'No Retirement', percentage: 65 },
-            { id: 2, name: 'Clarence Thomas', percentage: 22 },
-            { id: 3, name: 'Samuel Alito', percentage: 13 }
-          ]
+          title: 'Supreme Court Justice retirement in 2024?',
+          percentage: 35,
+          volume: '$890k Vol.'
+        },
+        {
+          id: 8,
+          avatar: '🇮🇱',
+          title: 'Israel x Hamas ceasefire by August 15?',
+          percentage: 6,
+          volume: '$4m Vol.'
+        },
+        {
+          id: 9,
+          avatar: '🔥',
+          title: 'Will Trump pardon Jonathan Pollard by Jan?',
+          percentage: 22,
+          volume: '$3m Vol.'
+        },
+        {
+          id: 10,
+          avatar: '💊',
+          title: 'GLP-1 released by major pharma in 2024?',
+          percentage: 78,
+          volume: '$974k Vol.'
+        },
+        {
+          id: 11,
+          avatar: '🏛️',
+          title: 'Will Polymarket US go live in 2025?',
+          percentage: 65,
+          volume: '$413k Vol.'
+        },
+        {
+          id: 12,
+          avatar: '📈',
+          title: 'US congress stock trading ban in 2025?',
+          percentage: 8,
+          volume: '$24k Vol.'
         }
       ]
     }
