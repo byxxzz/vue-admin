@@ -3,29 +3,33 @@
     <!-- Market Header -->
     <div class="market-header">
       <div class="market-info">
-        <div class="market-avatar">
+        <img
+          v-if="market.profileImage"
+          :src="market.profileImage"
+          :alt="market.person"
+          class="profile-image"
+        />
+        <div class="market-avatar" v-else>
           <span class="avatar-emoji">{{ market.avatar }}</span>
         </div>
-        <h3 class="market-title">{{ market.title }}</h3>
+        <div class="market-details">
+          <h3 class="market-title">{{ market.title }}</h3>
+        </div>
+      </div>
+      <div class="market-chance">
+        <span class="percentage">{{ market.percentage }}%</span>
+        <span class="chance-label">chance</span>
       </div>
     </div>
 
-    <!-- Candidates List -->
-    <div class="candidates-section">
-      <div
-        v-for="candidate in market.candidates"
-        :key="candidate.id"
-        class="candidate-row"
-      >
-        <div class="candidate-info">
-          <span class="candidate-name">{{ candidate.name }}</span>
-          <span class="candidate-percentage">{{ candidate.percentage }}%</span>
-        </div>
-        <div class="candidate-actions">
-          <button class="trade-btn yes-btn">Yes</button>
-          <button class="trade-btn no-btn">No</button>
-        </div>
-      </div>
+    <!-- Trading Buttons -->
+    <div class="trading-section">
+      <button class="trade-btn buy-yes">
+        Buy Yes ↗
+      </button>
+      <button class="trade-btn buy-no">
+        Buy No ↓
+      </button>
     </div>
 
     <!-- Market Footer -->
@@ -34,7 +38,6 @@
         <span class="volume-text">{{ market.volume }}</span>
       </div>
       <div class="action-icons">
-        <button class="icon-btn">👥</button>
         <button class="icon-btn">🎁</button>
         <button class="icon-btn">🔖</button>
       </div>
