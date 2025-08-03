@@ -1,47 +1,93 @@
 <template>
   <div class="market-card">
-    <!-- Market Header -->
-    <div class="market-header">
-      <div class="market-info">
-        <img
-          v-if="market.profileImage"
-          :src="market.profileImage"
-          :alt="market.person"
-          class="profile-image"
-        />
-        <div class="market-avatar" v-else>
-          <span class="avatar-emoji">{{ market.avatar }}</span>
+    <!-- Binary Format (Yes/No) -->
+    <template v-if="market.type === 'binary'">
+      <!-- Market Header -->
+      <div class="market-header">
+        <div class="market-info">
+          <img
+            v-if="market.profileImage"
+            :src="market.profileImage"
+            :alt="market.person"
+            class="profile-image"
+          />
+          <div class="market-avatar" v-else>
+            <span class="avatar-emoji">{{ market.avatar }}</span>
+          </div>
+          <div class="market-details">
+            <h3 class="market-title">{{ market.title }}</h3>
+          </div>
         </div>
-        <div class="market-details">
+        <div class="market-chance">
+          <span class="percentage">{{ market.percentage }}%</span>
+          <span class="chance-label">chance</span>
+        </div>
+      </div>
+
+      <!-- Trading Buttons -->
+      <div class="trading-section">
+        <button class="trade-btn buy-yes">
+          Buy Yes ↗
+        </button>
+        <button class="trade-btn buy-no">
+          Buy No ↓
+        </button>
+      </div>
+
+      <!-- Market Footer -->
+      <div class="market-footer">
+        <div class="volume-info">
+          <span class="volume-text">{{ market.volume }}</span>
+        </div>
+        <div class="action-icons">
+          <button class="icon-btn">🎁</button>
+          <button class="icon-btn">🔖</button>
+        </div>
+      </div>
+    </template>
+
+    <!-- Multi-candidate Format -->
+    <template v-else>
+      <!-- Market Header -->
+      <div class="market-header-multi">
+        <div class="market-info">
+          <div class="market-avatar">
+            <span class="avatar-emoji">{{ market.avatar }}</span>
+          </div>
           <h3 class="market-title">{{ market.title }}</h3>
         </div>
       </div>
-      <div class="market-chance">
-        <span class="percentage">{{ market.percentage }}%</span>
-        <span class="chance-label">chance</span>
-      </div>
-    </div>
 
-    <!-- Trading Buttons -->
-    <div class="trading-section">
-      <button class="trade-btn buy-yes">
-        Buy Yes ↗
-      </button>
-      <button class="trade-btn buy-no">
-        Buy No ↓
-      </button>
-    </div>
+      <!-- Candidates List -->
+      <div class="candidates-section">
+        <div
+          v-for="candidate in market.candidates"
+          :key="candidate.id"
+          class="candidate-row"
+        >
+          <div class="candidate-info">
+            <span class="candidate-name">{{ candidate.name }}</span>
+            <span class="candidate-percentage">{{ candidate.percentage }}%</span>
+          </div>
+          <div class="candidate-actions">
+            <button class="trade-btn-small yes-btn">Yes</button>
+            <button class="trade-btn-small no-btn">No</button>
+          </div>
+        </div>
+      </div>
 
-    <!-- Market Footer -->
-    <div class="market-footer">
-      <div class="volume-info">
-        <span class="volume-text">{{ market.volume }}</span>
+      <!-- Market Footer -->
+      <div class="market-footer">
+        <div class="volume-info">
+          <span class="volume-text">{{ market.volume }}</span>
+        </div>
+        <div class="action-icons">
+          <button class="icon-btn">👥</button>
+          <button class="icon-btn">🎁</button>
+          <button class="icon-btn">🔖</button>
+        </div>
       </div>
-      <div class="action-icons">
-        <button class="icon-btn">🎁</button>
-        <button class="icon-btn">🔖</button>
-      </div>
-    </div>
+    </template>
   </div>
 </template>
 
@@ -215,5 +261,101 @@ export default {
 .icon-btn:hover {
   background: #f3f4f6;
   color: #6b7280;
+}
+
+/* Multi-candidate format styles */
+.market-header-multi {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.market-header-multi .market-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.market-header-multi .market-avatar {
+  width: 32px;
+  height: 32px;
+}
+
+.market-header-multi .avatar-emoji {
+  font-size: 16px;
+}
+
+.candidates-section {
+  margin-bottom: 16px;
+}
+
+.candidate-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f9fafb;
+}
+
+.candidate-row:last-child {
+  border-bottom: none;
+}
+
+.candidate-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.candidate-name {
+  font-size: 14px;
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.candidate-percentage {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-left: auto;
+  margin-right: 16px;
+}
+
+.candidate-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.trade-btn-small {
+  padding: 4px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 32px;
+}
+
+.yes-btn {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.yes-btn:hover {
+  background: #bbf7d0;
+}
+
+.no-btn {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.no-btn:hover {
+  background: #fecaca;
 }
 </style>
