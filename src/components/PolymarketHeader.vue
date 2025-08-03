@@ -59,11 +59,25 @@
 </template>
 
 <script>
+import AuthModal from './AuthModal.vue'
+
 export default {
   name: 'PolymarketHeader',
+  components: {
+    AuthModal
+  },
   data() {
     return {
-      searchQuery: ''
+      searchQuery: '',
+      isAuthModalVisible: false
+    }
+  },
+  methods: {
+    showAuthModal() {
+      this.isAuthModalVisible = true
+    },
+    hideAuthModal() {
+      this.isAuthModalVisible = false
     }
   }
 }
