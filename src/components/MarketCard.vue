@@ -6,46 +6,38 @@
         <div class="market-avatar">
           <span class="avatar-emoji">{{ market.avatar }}</span>
         </div>
-        <div class="market-details">
-          <h3 class="market-title">{{ market.title }}</h3>
-          <div class="market-meta">
-            <span class="market-author">{{ market.author }}</span>
-            <span class="market-percentage">{{ market.percentage }}%</span>
-            <span class="market-change" :class="market.changeDirection">
-              {{ market.change }}
-            </span>
-          </div>
+        <h3 class="market-title">{{ market.title }}</h3>
+      </div>
+    </div>
+
+    <!-- Candidates List -->
+    <div class="candidates-section">
+      <div
+        v-for="candidate in market.candidates"
+        :key="candidate.id"
+        class="candidate-row"
+      >
+        <div class="candidate-info">
+          <span class="candidate-name">{{ candidate.name }}</span>
+          <span class="candidate-percentage">{{ candidate.percentage }}%</span>
+        </div>
+        <div class="candidate-actions">
+          <button class="trade-btn yes-btn">Yes</button>
+          <button class="trade-btn no-btn">No</button>
         </div>
       </div>
-      <div class="market-actions">
-        <button class="bookmark-btn">🔖</button>
-        <button class="share-btn">📤</button>
-      </div>
     </div>
 
-    <!-- Market Stats -->
-    <div class="market-stats">
+    <!-- Market Footer -->
+    <div class="market-footer">
       <div class="volume-info">
-        <span class="volume-label">{{ market.volumeLabel }}</span>
-        <span class="volume-value">{{ market.volume }}</span>
+        <span class="volume-text">{{ market.volume }}</span>
       </div>
-    </div>
-
-    <!-- Trading Buttons -->
-    <div class="trading-section">
-      <button class="trade-btn buy-yes" :class="{ disabled: market.buyYesDisabled }">
-        <span class="btn-label">Buy Yes</span>
-        <span class="btn-price">{{ market.buyYesPrice }}</span>
-      </button>
-      <button class="trade-btn buy-no" :class="{ disabled: market.buyNoDisabled }">
-        <span class="btn-label">Buy No</span>
-        <span class="btn-price">{{ market.buyNoPrice }}</span>
-      </button>
-    </div>
-
-    <!-- Additional Info -->
-    <div class="additional-info" v-if="market.additionalInfo">
-      <span class="info-text">{{ market.additionalInfo }}</span>
+      <div class="action-icons">
+        <button class="icon-btn">👥</button>
+        <button class="icon-btn">🎁</button>
+        <button class="icon-btn">🔖</button>
+      </div>
     </div>
   </div>
 </template>
