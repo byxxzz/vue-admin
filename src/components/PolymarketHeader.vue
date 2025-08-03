@@ -39,17 +39,20 @@
     <!-- Secondary Navigation -->
     <div class="secondary-nav">
       <div class="nav-container">
-        <button class="filter-btn active">All</button>
-        <button class="filter-btn">Breaking News</button>
-        <button class="filter-btn">Israel</button>
-        <button class="filter-btn">Trade War</button>
-        <button class="filter-btn">Epstein</button>
-        <button class="filter-btn">Trump Presidency</button>
-        <button class="filter-btn">Earn 4%</button>
-        <button class="filter-btn">Jerome Powell</button>
-        <button class="filter-btn">Ghislaine Maxwell</button>
-        <button class="filter-btn">AI</button>
-        <button class="nav-arrow">→</button>
+        <button class="nav-item trending">🔥 Trending</button>
+        <button class="nav-item">New</button>
+        <button class="nav-item">Politics</button>
+        <button class="nav-item">Middle East</button>
+        <button class="nav-item">Sports</button>
+        <button class="nav-item">Crypto</button>
+        <button class="nav-item">Tech</button>
+        <button class="nav-item">Culture</button>
+        <button class="nav-item">World</button>
+        <button class="nav-item">Economy</button>
+        <button class="nav-item">Trump</button>
+        <button class="nav-item">Elections</button>
+        <button class="nav-item">Mentions</button>
+        <button class="nav-item more-dropdown">More ▼</button>
       </div>
     </div>
 
@@ -224,48 +227,46 @@ export default {
 }
 
 .secondary-nav {
-  background: #f9fafb;
+  background: white;
   border-top: 1px solid #e5e7eb;
-  padding: 8px 0;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0;
 }
 
 .nav-container {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0;
   padding: 0 20px;
   max-width: 1200px;
   margin: 0 auto;
   overflow-x: auto;
 }
 
-.filter-btn {
+.nav-item {
   background: none;
   border: none;
   color: #6b7280;
   font-size: 13px;
-  padding: 6px 12px;
-  border-radius: 6px;
+  font-weight: 500;
+  padding: 12px 16px;
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.2s;
+  border-bottom: 2px solid transparent;
 }
 
-.filter-btn:hover {
-  background: #e5e7eb;
+.nav-item:hover {
+  color: #374151;
+  background: #f9fafb;
 }
 
-.filter-btn.active {
-  background: #dbeafe;
-  color: #1d4ed8;
+.nav-item.trending {
+  color: #1f2937;
+  border-bottom-color: #3b82f6;
 }
 
-.nav-arrow {
-  background: none;
-  border: none;
-  color: #6b7280;
-  font-size: 16px;
-  cursor: pointer;
-  padding: 4px;
+.nav-item.more-dropdown {
+  color: #374151;
 }
 </style>
