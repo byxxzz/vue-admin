@@ -30,7 +30,7 @@
       <!-- User Actions -->
       <div class="user-section">
         <button class="help-btn">❓ How it works</button>
-        <button class="login-btn" @click="showAuthModal">Log in1<br /></button>
+        <button class="login-btn" @click="showAuthModal"><span>Log in</span><br /></button>
         <button class="signup-btn" @click="showAuthModal">Sign Up</button>
         <button class="menu-btn">☰</button>
       </div>
