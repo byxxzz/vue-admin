@@ -65,8 +65,13 @@
 </template>
 
 <script>
+import MetaMaskModal from './MetaMaskModal.vue'
+
 export default {
   name: 'AuthModal',
+  components: {
+    MetaMaskModal
+  },
   props: {
     isVisible: {
       type: Boolean,
@@ -75,13 +80,20 @@ export default {
   },
   data() {
     return {
-      email: ''
+      email: '',
+      isMetaMaskModalVisible: false
     }
   },
   methods: {
     closeModal() {
       this.$emit('close')
       this.email = ''
+    },
+    showMetaMaskModal() {
+      this.isMetaMaskModalVisible = true
+    },
+    hideMetaMaskModal() {
+      this.isMetaMaskModalVisible = false
     }
   },
   mounted() {
