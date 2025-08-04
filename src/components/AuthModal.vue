@@ -36,7 +36,7 @@
 
         <!-- Social Login Icons -->
         <div class="social-icons">
-          <button class="social-icon metamask">
+          <button class="social-icon metamask" @click="showMetaMaskModal">
             🦊
           </button>
           <button class="social-icon coinbase">
@@ -58,6 +58,9 @@
         </div>
       </div>
     </div>
+
+    <!-- MetaMask Modal -->
+    <MetaMaskModal :isVisible="isMetaMaskModalVisible" @close="hideMetaMaskModal" />
   </div>
 </template>
 
