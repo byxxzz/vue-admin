@@ -314,4 +314,27 @@ export default {
 .help-text a:hover {
   text-decoration: underline;
 }
+
+/* MetaMask Modal Animation Styles */
+.metamask-enter-active, .metamask-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.metamask-enter-from, .metamask-leave-to {
+  opacity: 0;
+}
+
+.metamask-content-enter-active, .metamask-content-leave-active {
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.metamask-content-enter-from {
+  opacity: 0;
+  transform: scale(0.7) translateY(-50px) rotateX(15deg);
+}
+
+.metamask-content-leave-to {
+  opacity: 0;
+  transform: scale(0.85) translateY(30px) rotateX(-10deg);
+}
 </style>
