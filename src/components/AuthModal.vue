@@ -23,18 +23,23 @@
               <span class="divider-text">OR</span>
             </div>
 
-            <!-- Email Input Section -->
-            <div class="email-section">
-              <input
-                type="email"
-                placeholder="Enter Email"
-                class="email-input"
-                v-model="email"
-              />
-              <button class="continue-btn" :disabled="!email">
-                Continue
-              </button>
+            <!-- Solana Wallet Input Section -->
+        <div class="wallet-section">
+          <div class="wallet-input-container">
+            <div class="wallet-icon">
+              <img src="https://cdn.builder.io/api/v1/image/assets%2F86f447350d864cafabc33551b38f85a3%2F1bf282e7412e4cb2baae4baa4cbe90da?format=webp&width=800" alt="Solana" class="solana-icon" />
             </div>
+            <input
+              type="text"
+              placeholder="Enter Solana Wallet Address"
+              class="wallet-input"
+              v-model="walletAddress"
+            />
+          </div>
+          <button class="connect-btn" :disabled="!walletAddress">
+            Connect Wallet
+          </button>
+        </div>
 
             <!-- Social Login Icons -->
             <div class="social-icons">
@@ -84,14 +89,14 @@ export default {
   },
   data() {
     return {
-      email: '',
+      walletAddress: '',
       isMetaMaskModalVisible: false
     }
   },
   methods: {
     closeModal() {
       this.$emit('close')
-      this.email = ''
+      this.walletAddress = ''
     },
     showMetaMaskModal() {
       this.isMetaMaskModalVisible = true
@@ -221,50 +226,74 @@ export default {
   position: relative;
 }
 
-.email-section {
-  display: flex;
-  gap: 12px;
+.wallet-section {
   margin-bottom: 32px;
 }
 
-.email-input {
-  flex: 1;
-  padding: 12px 16px;
+.wallet-input-container {
+  display: flex;
+  align-items: center;
   border: 1px solid #d1d5db;
   border-radius: 8px;
-  font-size: 14px;
-  outline: none;
+  margin-bottom: 12px;
   transition: border-color 0.2s;
 }
 
-.email-input:focus {
+.wallet-input-container:focus-within {
   border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
-.email-input::placeholder {
+.wallet-icon {
+  padding: 12px 0 12px 16px;
+  display: flex;
+  align-items: center;
+}
+
+.solana-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.wallet-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  outline: none;
+}
+
+.wallet-input::placeholder {
   color: #9ca3af;
 }
 
-.continue-btn {
-  background: #1f2937;
+.connect-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #9945ff 0%, #14f195 100%);
   color: white;
   border: none;
   border-radius: 8px;
   padding: 12px 20px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
-  white-space: nowrap;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.continue-btn:hover:not(:disabled) {
-  background: #374151;
+.connect-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(153, 69, 255, 0.3);
 }
 
-.continue-btn:disabled {
+.connect-btn:disabled {
   background: #d1d5db;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .social-icons {
