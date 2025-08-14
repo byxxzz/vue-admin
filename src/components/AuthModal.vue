@@ -1,67 +1,71 @@
 <template>
-  <div v-if="isVisible" class="modal-overlay" @click="closeModal">
-    <div class="modal-container" @click.stop>
-      <!-- Close Button -->
-      <button class="close-btn" @click="closeModal">
-        ✕
-      </button>
+  <transition name="modal" appear>
+    <div v-if="isVisible" class="modal-overlay" @click="closeModal">
+      <transition name="modal-content" appear>
+        <div class="modal-container" @click.stop>
+          <!-- Close Button -->
+          <button class="close-btn" @click="closeModal">
+            ✕
+          </button>
 
-      <!-- Modal Content -->
-      <div class="modal-content">
-        <h2 class="modal-title">Welcome to Polymarket</h2>
+          <!-- Modal Content -->
+          <div class="modal-content">
+            <h2 class="modal-title">Welcome to Polymarket</h2>
 
-        <!-- Google Login Button -->
-        <button class="google-btn">
-          <span class="google-icon">G</span>
-          Continue with Google
-        </button>
+            <!-- Google Login Button -->
+            <button class="google-btn">
+              <span class="google-icon">G</span>
+              Continue with Google
+            </button>
 
-        <!-- Divider -->
-        <div class="divider">
-          <span class="divider-text">OR</span>
+            <!-- Divider -->
+            <div class="divider">
+              <span class="divider-text">OR</span>
+            </div>
+
+            <!-- Email Input Section -->
+            <div class="email-section">
+              <input
+                type="email"
+                placeholder="Enter Email"
+                class="email-input"
+                v-model="email"
+              />
+              <button class="continue-btn" :disabled="!email">
+                Continue
+              </button>
+            </div>
+
+            <!-- Social Login Icons -->
+            <div class="social-icons">
+              <button class="social-icon metamask" @click="showMetaMaskModal">
+                🦊
+              </button>
+              <button class="social-icon coinbase">
+                <span class="coinbase-logo">C</span>
+              </button>
+              <button class="social-icon discord">
+                💬
+              </button>
+              <button class="social-icon wallet">
+                ~
+              </button>
+            </div>
+
+            <!-- Footer Links -->
+            <div class="footer-links">
+              <a href="#" class="footer-link">Terms</a>
+              <span class="separator">•</span>
+              <a href="#" class="footer-link">Privacy</a>
+            </div>
+          </div>
         </div>
-
-        <!-- Email Input Section -->
-        <div class="email-section">
-          <input
-            type="email"
-            placeholder="Enter Email"
-            class="email-input"
-            v-model="email"
-          />
-          <button class="continue-btn" :disabled="!email">
-            Continue
-          </button>
-        </div>
-
-        <!-- Social Login Icons -->
-        <div class="social-icons">
-          <button class="social-icon metamask" @click="showMetaMaskModal">
-            🦊
-          </button>
-          <button class="social-icon coinbase">
-            <span class="coinbase-logo">C</span>
-          </button>
-          <button class="social-icon discord">
-            💬
-          </button>
-          <button class="social-icon wallet">
-            ~
-          </button>
-        </div>
-
-        <!-- Footer Links -->
-        <div class="footer-links">
-          <a href="#" class="footer-link">Terms</a>
-          <span class="separator">•</span>
-          <a href="#" class="footer-link">Privacy</a>
-        </div>
-      </div>
+      </transition>
     </div>
+  </transition>
 
-    <!-- MetaMask Modal -->
-    <MetaMaskModal :isVisible="isMetaMaskModalVisible" @close="hideMetaMaskModal" />
-  </div>
+  <!-- MetaMask Modal -->
+  <MetaMaskModal :isVisible="isMetaMaskModalVisible" @close="hideMetaMaskModal" />
 </template>
 
 <script>
@@ -341,5 +345,28 @@ export default {
 .separator {
   color: #d1d5db;
   font-size: 14px;
+}
+
+/* Modal Animation Styles */
+.modal-enter-active, .modal-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.modal-enter-from, .modal-leave-to {
+  opacity: 0;
+}
+
+.modal-content-enter-active, .modal-content-leave-active {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-content-enter-from {
+  opacity: 0;
+  transform: scale(0.8) translateY(-30px);
+}
+
+.modal-content-leave-to {
+  opacity: 0;
+  transform: scale(0.9) translateY(20px);
 }
 </style>
