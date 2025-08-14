@@ -10,77 +10,59 @@
 
           <!-- Modal Content -->
           <div class="modal-content">
-            <h2 class="modal-title">Welcome to Polymarket</h2>
+            <h2 class="modal-title">You'll need a wallet on<br />Solana to continue</h2>
 
-            <!-- Google Login Button -->
-            <button class="google-btn">
-              <span class="google-icon">G</span>
-              Continue with Google
+            <!-- Wallet Icon -->
+            <div class="wallet-icon-section">
+              <div class="wallet-icon-container">
+                <img 
+                  src="https://cdn.builder.io/api/v1/image/assets%2F86f447350d864cafabc33551b38f85a3%2F6aafa3c995fd4cf1bb3ca052913cc551?format=webp&width=800" 
+                  alt="Wallet Icon"
+                  class="wallet-icon"
+                />
+              </div>
+            </div>
+
+            <!-- Get Started Button -->
+            <button class="get-started-btn" @click="handleGetStarted">
+              Get started
             </button>
 
-            <!-- Divider -->
-            <div class="divider">
-              <span class="divider-text">OR</span>
-            </div>
-
-            <!-- Solana Wallet Input Section -->
-        <div class="wallet-section">
-          <div class="wallet-input-container">
-            <div class="wallet-icon">
-              <img src="https://cdn.builder.io/api/v1/image/assets%2F86f447350d864cafabc33551b38f85a3%2F1bf282e7412e4cb2baae4baa4cbe90da?format=webp&width=800" alt="Solana" class="solana-icon" />
-            </div>
-            <input
-              type="text"
-              placeholder="Enter Solana Wallet Address"
-              class="wallet-input"
-              v-model="walletAddress"
-            />
-          </div>
-          <button class="connect-btn" :disabled="!walletAddress">
-            Connect Wallet
-          </button>
-        </div>
-
-            <!-- Social Login Icons -->
-            <div class="social-icons">
-              <button class="social-icon metamask" @click="showMetaMaskModal">
-                🦊
+            <!-- Already have wallet section -->
+            <div class="already-have-wallet">
+              <button class="wallet-options-btn" @click="toggleWalletOptions">
+                Already have a wallet? View options
+                <span class="dropdown-arrow" :class="{ 'expanded': showWalletOptions }">▼</span>
               </button>
-              <button class="social-icon coinbase">
-                <span class="coinbase-logo">C</span>
-              </button>
-              <button class="social-icon discord">
-                💬
-              </button>
-              <button class="social-icon wallet">
-                ~
-              </button>
-            </div>
-
-            <!-- Footer Links -->
-            <div class="footer-links">
-              <a href="#" class="footer-link">Terms</a>
-              <span class="separator">•</span>
-              <a href="#" class="footer-link">Privacy</a>
+              
+              <!-- Wallet Options (expandable) -->
+              <transition name="slide-down">
+                <div v-if="showWalletOptions" class="wallet-options">
+                  <button class="wallet-option" @click="connectPhantom">
+                    <span class="wallet-logo">👻</span>
+                    Phantom
+                  </button>
+                  <button class="wallet-option" @click="connectSolflare">
+                    <span class="wallet-logo">🔥</span>
+                    Solflare
+                  </button>
+                  <button class="wallet-option" @click="connectBackpack">
+                    <span class="wallet-logo">🎒</span>
+                    Backpack
+                  </button>
+                </div>
+              </transition>
             </div>
           </div>
         </div>
       </transition>
     </div>
   </transition>
-
-  <!-- MetaMask Modal -->
-  <MetaMaskModal :isVisible="isMetaMaskModalVisible" @close="hideMetaMaskModal" />
 </template>
 
 <script>
-import MetaMaskModal from './MetaMaskModal.vue'
-
 export default {
   name: 'AuthModal',
-  components: {
-    MetaMaskModal
-  },
   props: {
     isVisible: {
       type: Boolean,
@@ -89,20 +71,33 @@ export default {
   },
   data() {
     return {
-      walletAddress: '',
-      isMetaMaskModalVisible: false
+      showWalletOptions: false
     }
   },
   methods: {
     closeModal() {
       this.$emit('close')
-      this.walletAddress = ''
+      this.showWalletOptions = false
     },
-    showMetaMaskModal() {
-      this.isMetaMaskModalVisible = true
+    handleGetStarted() {
+      // Handle get started action - could open wallet installation guide
+      console.log('Get started clicked')
+      // You can add logic here to guide users to install a Solana wallet
     },
-    hideMetaMaskModal() {
-      this.isMetaMaskModalVisible = false
+    toggleWalletOptions() {
+      this.showWalletOptions = !this.showWalletOptions
+    },
+    connectPhantom() {
+      console.log('Connect to Phantom wallet')
+      // Add Phantom wallet connection logic
+    },
+    connectSolflare() {
+      console.log('Connect to Solflare wallet')
+      // Add Solflare wallet connection logic
+    },
+    connectBackpack() {
+      console.log('Connect to Backpack wallet')
+      // Add Backpack wallet connection logic
     }
   },
   mounted() {
@@ -123,7 +118,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,248 +127,159 @@ export default {
 }
 
 .modal-container {
-  background: white;
-  border-radius: 16px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 20px;
   width: 100%;
-  max-width: 440px;
+  max-width: 420px;
   position: relative;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .close-btn {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 20px;
+  right: 20px;
   background: none;
   border: none;
-  font-size: 18px;
-  color: #9ca3af;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
   padding: 8px;
   border-radius: 50%;
-  transition: all 0.2s;
-  width: 32px;
-  height: 32px;
+  transition: all 0.3s ease;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .close-btn:hover {
-  background: #f3f4f6;
-  color: #374151;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
 }
 
 .modal-content {
-  padding: 40px 32px 32px;
+  padding: 60px 40px 40px;
   text-align: center;
 }
 
 .modal-title {
-  font-size: 24px;
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 32px;
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 40px;
+  line-height: 1.3;
 }
 
-.google-btn {
-  width: 100%;
-  background: #4285f4;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 16px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
+.wallet-icon-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.wallet-icon-container {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  transition: background-color 0.2s;
-  margin-bottom: 24px;
-}
-
-.google-btn:hover {
-  background: #3367d6;
-}
-
-.google-icon {
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.divider {
-  position: relative;
-  margin: 24px 0;
-}
-
-.divider::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: #e5e7eb;
-}
-
-.divider-text {
-  background: white;
-  color: #9ca3af;
-  padding: 0 16px;
-  font-size: 14px;
-  position: relative;
-}
-
-.wallet-section {
-  margin-bottom: 32px;
-}
-
-.wallet-input-container {
-  display: flex;
-  align-items: center;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  margin-bottom: 12px;
-  transition: border-color 0.2s;
-}
-
-.wallet-input-container:focus-within {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .wallet-icon {
-  padding: 12px 0 12px 16px;
-  display: flex;
-  align-items: center;
-}
-
-.solana-icon {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
+  filter: brightness(1.2);
 }
 
-.wallet-input {
-  flex: 1;
-  padding: 12px 16px;
-  border: none;
-  background: transparent;
-  font-size: 14px;
-  outline: none;
-}
-
-.wallet-input::placeholder {
-  color: #9ca3af;
-}
-
-.connect-btn {
+.get-started-btn {
   width: 100%;
-  background: linear-gradient(135deg, #9945ff 0%, #14f195 100%);
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
   color: white;
   border: none;
-  border-radius: 8px;
-  padding: 12px 20px;
-  font-size: 14px;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
 }
 
-.connect-btn:hover:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(153, 69, 255, 0.3);
+.get-started-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(124, 58, 237, 0.5);
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
 }
 
-.connect-btn:disabled {
-  background: #d1d5db;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+.already-have-wallet {
+  margin-top: 20px;
 }
 
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.social-icon {
-  width: 48px;
-  height: 48px;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  background: white;
+.wallet-options-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  transition: all 0.2s;
-}
-
-.social-icon:hover {
-  border-color: #d1d5db;
-  background: #f9fafb;
-}
-
-.social-icon.metamask {
-  background: #f6851b;
-  border-color: #f6851b;
-  color: white;
-}
-
-.social-icon.coinbase {
-  background: #0052ff;
-  border-color: #0052ff;
-  color: white;
-}
-
-.coinbase-logo {
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.social-icon.discord {
-  background: #5865f2;
-  border-color: #5865f2;
-  color: white;
-}
-
-.social-icon.wallet {
-  background: #1db584;
-  border-color: #1db584;
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.footer-links {
+  padding: 12px 0;
+  transition: color 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
 }
 
-.footer-link {
-  color: #9ca3af;
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.2s;
+.wallet-options-btn:hover {
+  color: white;
 }
 
-.footer-link:hover {
-  color: #6b7280;
+.dropdown-arrow {
+  transition: transform 0.3s ease;
+  font-size: 12px;
 }
 
-.separator {
-  color: #d1d5db;
+.dropdown-arrow.expanded {
+  transform: rotate(180deg);
+}
+
+.wallet-options {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wallet-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: white;
   font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.wallet-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.wallet-logo {
+  font-size: 18px;
 }
 
 /* Modal Animation Styles */
@@ -386,7 +292,7 @@ export default {
 }
 
 .modal-content-enter-active, .modal-content-leave-active {
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .modal-content-enter-from {
@@ -397,5 +303,20 @@ export default {
 .modal-content-leave-to {
   opacity: 0;
   transform: scale(0.9) translateY(20px);
+}
+
+/* Slide down animation for wallet options */
+.slide-down-enter-active, .slide-down-leave-active {
+  transition: all 0.3s ease;
+}
+
+.slide-down-enter-from {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.slide-down-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
 }
 </style>
