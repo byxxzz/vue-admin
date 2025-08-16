@@ -38,17 +38,29 @@
               <!-- Wallet Options (expandable) -->
               <transition name="slide-down">
                 <div v-if="showWalletOptions" class="wallet-options">
-                  <button class="wallet-option" :class="{ 'selected': selectedWallet === 'phantom' }"  @click="selectWalletIndexFunc(1)">
+                  <button
+                    class="wallet-option"
+                    :class="{ 'selected': selectedWallet === 'phantom' }"
+                    @click="connectPhantom"
+                  >
                     <span class="wallet-logo">👻</span>
                     Phantom
                     <span v-if="selectedWallet === 'phantom'" class="check-icon">✓</span>
                   </button>
-                  <button class="wallet-option" :class="{ 'selected': selectedWallet === 'solflare' }"  @click="selectWalletIndexFunc(2)">
+                  <button
+                    class="wallet-option"
+                    :class="{ 'selected': selectedWallet === 'solflare' }"
+                    @click="connectSolflare"
+                  >
                     <span class="wallet-logo">🔥</span>
                     Solflare
                     <span v-if="selectedWallet === 'solflare'" class="check-icon">✓</span>
                   </button>
-                  <button class="wallet-option" :class="{ 'selected': selectedWallet === 'backpack' }"  @click="selectWalletIndexFunc(3)">
+                  <button
+                    class="wallet-option"
+                    :class="{ 'selected': selectedWallet === 'backpack' }"
+                    @click="connectBackpack"
+                  >
                     <span class="wallet-logo">🎒</span>
                     Backpack
                     <span v-if="selectedWallet === 'backpack'" class="check-icon">✓</span>
@@ -74,7 +86,8 @@ export default {
   },
   data() {
     return {
-      showWalletOptions: false
+      showWalletOptions: false,
+      selectedWallet: null
     }
   },
   methods: {
