@@ -104,19 +104,20 @@ export default {
     toggleWalletOptions() {
       this.showWalletOptions = !this.showWalletOptions
     },
-    selectWalletIndexFunc(index){
-      switch(index){
-        case 1:
-          this.selectedWallet = 'phantom'
-          break
-        case 2:
-          this.selectedWallet = 'solflare'
-          break
-        case 3:
-          this.selectedWallet = 'backpack'
-          break
-      }
-      console.log('walletIndex',index,this.selectedWallet)
+    connectPhantom() {
+      this.selectedWallet = 'phantom'
+      console.log('Connect to Phantom wallet')
+      // Add Phantom wallet connection logic
+    },
+    connectSolflare() {
+      this.selectedWallet = 'solflare'
+      console.log('Connect to Solflare wallet')
+      // Add Solflare wallet connection logic
+    },
+    connectBackpack() {
+      this.selectedWallet = 'backpack'
+      console.log('Connect to Backpack wallet')
+      // Add Backpack wallet connection logic
     }
   },
   mounted() {
