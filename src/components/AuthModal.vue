@@ -38,29 +38,17 @@
               <!-- Wallet Options (expandable) -->
               <transition name="slide-down">
                 <div v-if="showWalletOptions" class="wallet-options">
-                  <button
-                    class="wallet-option"
-                    :class="{ 'selected': selectedWallet === 'phantom' }"
-                    @click="connectPhantom"
-                  >
+                  <button class="wallet-option" :class="{ 'selected': selectedWallet === 'phantom' }"  @click="selectWalletIndexFunc(1)">
                     <span class="wallet-logo">👻</span>
                     Phantom
                     <span v-if="selectedWallet === 'phantom'" class="check-icon">✓</span>
                   </button>
-                  <button
-                    class="wallet-option"
-                    :class="{ 'selected': selectedWallet === 'solflare' }"
-                    @click="connectSolflare"
-                  >
+                  <button class="wallet-option" :class="{ 'selected': selectedWallet === 'solflare' }"  @click="selectWalletIndexFunc(2)">
                     <span class="wallet-logo">🔥</span>
                     Solflare
                     <span v-if="selectedWallet === 'solflare'" class="check-icon">✓</span>
                   </button>
-                  <button
-                    class="wallet-option"
-                    :class="{ 'selected': selectedWallet === 'backpack' }"
-                    @click="connectBackpack"
-                  >
+                  <button class="wallet-option" :class="{ 'selected': selectedWallet === 'backpack' }"  @click="selectWalletIndexFunc(3)">
                     <span class="wallet-logo">🎒</span>
                     Backpack
                     <span v-if="selectedWallet === 'backpack'" class="check-icon">✓</span>
@@ -86,8 +74,7 @@ export default {
   },
   data() {
     return {
-      showWalletOptions: false,
-      selectedWallet: null
+      showWalletOptions: false
     }
   },
   methods: {
@@ -104,20 +91,19 @@ export default {
     toggleWalletOptions() {
       this.showWalletOptions = !this.showWalletOptions
     },
-    connectPhantom() {
-      this.selectedWallet = 'phantom'
-      console.log('Connect to Phantom wallet')
-      // Add Phantom wallet connection logic
-    },
-    connectSolflare() {
-      this.selectedWallet = 'solflare'
-      console.log('Connect to Solflare wallet')
-      // Add Solflare wallet connection logic
-    },
-    connectBackpack() {
-      this.selectedWallet = 'backpack'
-      console.log('Connect to Backpack wallet')
-      // Add Backpack wallet connection logic
+    selectWalletIndexFunc(index){
+      switch(index){
+        case 1:
+          this.selectedWallet = 'phantom'
+          break
+        case 2:
+          this.selectedWallet = 'solflare'
+          break
+        case 3:
+          this.selectedWallet = 'backpack'
+          break
+      }
+      console.log('walletIndex',index,this.selectedWallet)
     }
   },
   mounted() {
