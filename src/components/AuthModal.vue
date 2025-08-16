@@ -100,7 +100,7 @@ export default {
           this.selectedWallet = 'solflare'
           break
         case 3:
-          //this.selectedWallet = 'backpack'
+          this.selectedWallet = 'backpack'
           break
       }
       console.log('walletIndex',index,this.selectedWallet)
