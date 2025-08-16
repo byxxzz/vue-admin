@@ -38,17 +38,32 @@
               <!-- Wallet Options (expandable) -->
               <transition name="slide-down">
                 <div v-if="showWalletOptions" class="wallet-options">
-                  <button class="wallet-option" @click="connectPhantom">
+                  <button
+                    class="wallet-option"
+                    :class="{ 'selected': selectedWallet === 'phantom' }"
+                    @click="connectPhantom"
+                  >
                     <span class="wallet-logo">👻</span>
                     Phantom
+                    <span v-if="selectedWallet === 'phantom'" class="check-icon">✓</span>
                   </button>
-                  <button class="wallet-option" @click="connectSolflare">
+                  <button
+                    class="wallet-option"
+                    :class="{ 'selected': selectedWallet === 'solflare' }"
+                    @click="connectSolflare"
+                  >
                     <span class="wallet-logo">🔥</span>
                     Solflare
+                    <span v-if="selectedWallet === 'solflare'" class="check-icon">✓</span>
                   </button>
-                  <button class="wallet-option" @click="connectBackpack">
+                  <button
+                    class="wallet-option"
+                    :class="{ 'selected': selectedWallet === 'backpack' }"
+                    @click="connectBackpack"
+                  >
                     <span class="wallet-logo">🎒</span>
                     Backpack
+                    <span v-if="selectedWallet === 'backpack'" class="check-icon">✓</span>
                   </button>
                 </div>
               </transition>
@@ -71,13 +86,15 @@ export default {
   },
   data() {
     return {
-      showWalletOptions: false
+      showWalletOptions: false,
+      selectedWallet: null
     }
   },
   methods: {
     closeModal() {
       this.$emit('close')
       this.showWalletOptions = false
+      this.selectedWallet = null
     },
     handleGetStarted() {
       // Handle get started action - could open wallet installation guide
@@ -88,14 +105,17 @@ export default {
       this.showWalletOptions = !this.showWalletOptions
     },
     connectPhantom() {
+      this.selectedWallet = 'phantom'
       console.log('Connect to Phantom wallet')
       // Add Phantom wallet connection logic
     },
     connectSolflare() {
+      this.selectedWallet = 'solflare'
       console.log('Connect to Solflare wallet')
       // Add Solflare wallet connection logic
     },
     connectBackpack() {
+      this.selectedWallet = 'backpack'
       console.log('Connect to Backpack wallet')
       // Add Backpack wallet connection logic
     }
@@ -278,8 +298,26 @@ export default {
   transform: translateY(-1px);
 }
 
+.wallet-option.selected {
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  border-color: #a855f7;
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+}
+
+.wallet-option.selected:hover {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+  transform: translateY(-1px);
+}
+
 .wallet-logo {
   font-size: 18px;
+}
+
+.check-icon {
+  margin-left: auto;
+  font-size: 16px;
+  font-weight: bold;
+  color: #10b981;
 }
 
 /* Modal Animation Styles */
